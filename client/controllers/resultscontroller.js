@@ -1,4 +1,4 @@
-//Controller for the Orders View
+//Controller for the results view
 myApp.controller('resultscontroller', function($scope,$route,$location,resumefactory,resultsfactory) {
     var postData = resumefactory.getData();
 

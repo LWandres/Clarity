@@ -1,4 +1,3 @@
-//Products factory
 myApp.factory('resumefactory', function($http) {
     var factory = {};
 
@@ -22,23 +21,22 @@ myApp.factory('resumefactory', function($http) {
         for (var word in jobWords){
             totalJobWords += 1;
 
-            var wordExclusion = factory.wordExcludeCheck(jobWords[word]);
-            var strippedJobWord = factory.stripPunctuation(jobWords[word]);
+            var wordExclusion = factory.wordExcludeCheck(jobWords[word]);//remove certain words from analysis
+            var strippedJobWord = factory.stripPunctuation(jobWords[word]);//strip punctuation from analysis
 
-            if (wordExclusion !== 1){
+            if (wordExclusion !== 1){//if word is not in the list
                 var isUnique = factory.isUnique(strippedJobWord,descriptionMap);
                 if (isUnique === true){
                     descriptionMap.set(""+ strippedJobWord +"",1);
                 }else{
                     var value = descriptionMap.get(""+ strippedJobWord+"");
-                    var newvalue = value + 1;
+                    var newvalue = value + 1; //increment word count for recurring words
                     descriptionMap.set(""+ strippedJobWord +"",newvalue);
                 }
             }
         }
         callback(descriptionMap,totalJobWords);
     };
-
 
     //creates new object from user's custom resume input
     factory.createResumeMap = function(info, callback) {
@@ -49,7 +47,6 @@ myApp.factory('resumefactory', function($http) {
             totalActionCount = 0;
 
         for (var word in resumeWords){
-            console.log(resumeWords[word]);
             totalResumeWords += 1;
             var wordExclusion = factory.wordExcludeCheck(resumeWords[word]);
             var strippedWord = factory.stripPunctuation(resumeWords[word]);
@@ -70,7 +67,6 @@ myApp.factory('resumefactory', function($http) {
             }
         }
         resumeMap.totalActionCount = totalActionCount;
-        console.log(resumeMap);
         callback(resumeMap);
     };
 
@@ -78,6 +74,7 @@ myApp.factory('resumefactory', function($http) {
         var totalMatchWords = 0;
         matchMap = new HashMap();
 
+        //check if resume includes each job description word
         for(var key in jobWords._data){
             var search = resumeWords.has(jobWords._data[key][0]);
             if (search === true){
@@ -87,6 +84,7 @@ myApp.factory('resumefactory', function($http) {
                 matchMap.set(""+ jobWords._data[key][0] +"",0);
             }
         }
+
         matchMap.totalMatchWords = totalMatchWords;
         callback(matchMap);
     };
@@ -101,6 +99,7 @@ myApp.factory('resumefactory', function($http) {
         }
     };
 
+    //searches for action statements in array
     factory.checkActionWords = function(word){
         var actionwords = ["achieved","improved","trained","mentored","managed","led","created","resolved","volunteered","influenced","increased","decreased","negotiated","launched","revenue","profits","budget","won","collaborated","conceptualized"];
         var search = actionwords.indexOf(""+word+"");
@@ -109,7 +108,6 @@ myApp.factory('resumefactory', function($http) {
             } else{
                 return 0;
             }
-
     };
 
     factory.stripPunctuation = function(word){
@@ -119,6 +117,7 @@ myApp.factory('resumefactory', function($http) {
             lastchar = punctuation.indexOf(""+word[word.length-1]+"");
             strippedWord = '';
 
+            //loop through until all outer punction is removed from each word.
             while(firstchar !== -1 || lastchar !== -1){
                 if(firstchar !== -1){
                     strippedWord = word.slice(1);

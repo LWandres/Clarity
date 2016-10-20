@@ -1,4 +1,3 @@
-//Customer factory
 myApp.factory('resultsfactory', function($http) {
     var factory = {};
 
@@ -7,17 +6,17 @@ myApp.factory('resultsfactory', function($http) {
         var resultsData = {
                 descriptionData: info.descriptionData,//job description input
                 totalJobWords:info.totalJobWords,//total # of words in job description
-                filterDescriptData: factory.filterTopDescripWords(info.descriptionData,totalJobWords),
+                filterDescriptData: factory.filterTopDescripWords(info.descriptionData,totalJobWords),//filters out most relevant/recurring words in job description
                 resumeData:info.resumeData,//resume input
                 totalResumeWords:info.totalResumeWords,
                 totalResumeWordPercent:(Math.round((info.totalResumeWords*100)/750)),//percentage of total resume/recommendation # of words
                 actionWordCount:info.resumeData.totalActionCount,
                 actionWordPercent:(Math.round((info.resumeData.totalActionCount*100)/20)),
-                totalMatch:info.matchData.totalMatchWords,
+                totalMatch:info.matchData.totalMatchWords,//total number of words that match between description and resume
                 matchPercent:factory.matchPercentage(info.totalJobWords,info.matchData.totalMatchWords),
                 wordCount:factory.wordCount(totalResumeWords)//gets over or under message for word count recommendation
         };
-        var filteredMatchWords = factory.filterMatchWords(info.matchData,resultsData.filterDescriptData);
+        var filteredMatchWords = factory.filterMatchWords(info.matchData,resultsData.filterDescriptData);//word match data from filtered map
         resultsData.filteredMatchWords = filteredMatchWords;
         callback(resultsData);
     };
