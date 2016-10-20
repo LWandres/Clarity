@@ -1,8 +1,11 @@
-# Mini-Store
-A back-end administration portal for a mock company to manage their customers, products, and orders.
+# Clarity
+This site allows users to upload their personalized resume content and compare it against job description data.
 
-Technologies: MEAN Stack (Mongo, Express.js, AngularJS, Node.js), Mongoose, HTML/CSS
+While there are other sites that facilitate this, many are paid services. I coded my own to enable limitless scanning.
 
-Involvement: Individual Project - Full Stack Web Developer
+Technologies: HTML5/CSS3, AngularJS, Node.js
+Involvement: Individual Project - Web Developer
 
-<img src="/static/assets/images/Mini-Store.png" alt="Mini-Store.png">
+<img src="/static/assets/images/clarityhome.png" alt="clarityhome.png">
+<img src="/static/assets/images/clarityscan.png" alt="clarityscan.png">
+<img src="/static/assets/images/clarityresultsport.png" alt="clarityresults.png">
