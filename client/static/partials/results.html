@@ -1,0 +1,63 @@
+<title>Scan Results</title>
+
+<body ng-controller="resultscontroller">
+    <div id="container">
+        <div id="resultsmain">
+            <h2>YOUR RESULTS</h2>
+            <div class="data col-md-12">
+                <div class="data-gauge col-md-4">
+                    <h3>Word Count</h3>
+                    <ng-gauge size="200" type="full" thick="15" value="resultsData.totalResumeWordPercent" cap="round" label="of word count"  foreground-color="rgb(207, 198, 4)" background-color="rgba(255,255,255, 0.4)" append="%"></ng-gauge><br>
+                    <p>Your resume has {{resultsData.totalResumeWords}} words.<br>
+                       You are {{resultsData.wordCount}} the 750 word limit.</p>
+                </div>
+
+                <div class="data-gauge col-md-4">
+                    <h3>Matching Words</h3>
+                    <ng-gauge size="200" type="full" thick="15" value="resultsData.matchPercent" cap="round" label="matching"  foreground-color="rgb(17, 190, 169)" background-color="rgba(255,255,255, 0.4)" append="%"></ng-gauge><br>
+                    <p>Increase your matching rate to 80%<br>
+                       to get your resume noticed!</p>
+                </div>
+
+                <div class="data-gauge col-md-4">
+                    <h3>Action Words</h3>
+                    <ng-gauge id="actionword" type="full" thick="15" size="200" cap="round" value="resultsData.actionWordCount"  label="action words"  foreground-color="rgba(221, 87, 45, 0.8)" background-color="rgba(255,255,255, 0.4)" ></ng-gauge><br>
+                    <p>You have {{resultsData.actionWordCount}} action words.<br>
+                       Try to be as specific and actionable as possible.</p>
+                </div>
+            </div>
+
+            <div class="descriptionwords col-md-6">
+                <h2>Job Description</h2>
+                <table class="table-hover col-md-12">
+                    <thead>
+                        <th>Word</th>
+                        <th>Frequency</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="key in resultsData.filterDescriptData._data" >
+                            <td>{{key[0]}}</td>
+                            <td>{{key[1][0]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="matchingwords col-md-6">
+                <h2>Matching Check</h2>
+                <table class="table-hover col-md-12">
+                    <thead>
+                        <th>Word</th>
+                        <th>Frequency</th>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="key in resultsData.filteredMatchWords._data" ng-class="{nomatch: (key[1] === 'no match'), match: (key[1] !== 'no match')}">
+                            <td>{{key[0]}}</td>
+                            <td>{{key[1]}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div><!-- end matching words div-->
+        </div><!-- end results main div-->
+    </div><!-- end container div-->
+</body>

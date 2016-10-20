@@ -1,0 +1,89 @@
+/*Responsive Design*/
+
+
+@media (max-width: 1200px) {
+    #header ul{
+        width:60%;
+    }
+}
+
+@media (max-width: 1020px) {
+    #header ul{
+        width:70%;
+    }
+}
+
+@media (max-width: 900px) {
+    .partials{
+        display: none !important;
+    }
+    #mobile-nav {
+        display: inline-block;
+        float: right;
+        height: 100%;
+        vertical-align: middle;
+        z-index: 999;
+        background: white;
+    }
+    #mobile-nav li {
+        display: block;
+        float: left;
+        list-style: none;
+        font-size: 1.5em !important;
+        padding-right: 1%;
+    }
+    #mobile-nav ul {
+        width: 100%;
+        padding-left: 0px;
+        float: none;
+        margin-left: 2px;
+    }
+    #mobile-nav a {
+        text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5);
+        color: black;
+        transition: color linear 0.15s;
+        font-size: .90em;
+    }
+    #mobile-nav a:hover, #mobile-nav.current-item a {
+        text-decoration: none;
+        color: darkturquoise;
+        font-size: 1em;
+        background:white !important;
+    }
+    #menu-btn {
+        position: absolute;
+        font-size: 18px;
+        font-weight: 200;
+        margin-top: 1%;
+        left: 85%;
+        background: white;
+        color: white;
+        border: none;
+        outline: none !important;
+    }
+    #menu-btn span {
+        display: block;
+        width: 19px;
+        height: 3px;
+        margin: 4px 0;
+        background: rgb(0, 0, 0);
+        z-index: 99;
+    }
+    .responsive-menu {
+        position: fixed;
+        top: 58px;
+        right: 12%;
+        display: inline-block;
+        background: white;
+        color:black;
+        width: 200px;
+		padding: 0% 0 0 3%;
+        z-index: 1015 !important;
+        font-size: .8em;
+		line-height: 2.5em;
+    }
+    .responsive-menu li {
+        display: inline-block;
+        width:100%;
+    }
+}

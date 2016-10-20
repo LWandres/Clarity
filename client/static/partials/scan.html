@@ -1,0 +1,29 @@
+<title>Scan Your Resume</title>
+
+<body ng-controller="scancontroller">
+    <div id="top" class="col-md-12">
+        <h2>Congratulations!</h2>
+        <h3>You're on your way to a resume employers can't refuse.</h3>
+        <h3>To scan your resume, use the following steps:</h3>
+        <ul>
+            <li> 1) Paste the job description into the box on the left</li>
+            <li> 2) Paste your resume into the box on the right</li>
+            <li> 3) Click "scan my resume" to see your results!
+        </ul>
+    </div>
+
+    <div id="inputs">
+        <form method="post" id="job_info" name="job_info">
+            <input type="submit" value="scan my resume" class="scancolor" ng-disabled="job_info.$invalid" ng-hide="job_info.$invalid" ng-click="scanResume()"></input><br>
+            <div class="jobinput" class="col-md-6">
+                <h2>JOB DESCRIPTION</h2>
+                <textarea class"job" name="job_description" ng-model="scan.job_description" ng-required="true"></textarea>
+            </div>
+            <div class="jobinput" class="col-md-6">
+                <h2>RESUME</h2>
+                <textarea class"job" name="resume_input" ng-model="scan.resume_input" ng-required="true"></textarea>
+            </div>
+            <input type="submit" value="scan my resume" class="scancolor" ng-disabled="job_info.$invalid" ng-hide="job_info.$invalid" ng-click="scanResume()"></input><br>
+        </form>
+    </div>
+</body>

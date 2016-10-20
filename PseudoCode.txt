@@ -1,0 +1,65 @@
+//Project Outline
+
+Requirements:
+- Two View Pages:
+    1) Main Form Input x
+    2) Results
+
+Algorithm:
+1) Get and Analyze Post Data from Job Description
+    Job Description Data:
+        <!-- A: Calculate total word count for each word -->
+            <!-- i:   Use a 1:1 dictionary: Data Structure format: {"word": total#} -->
+            <!-- ii:  Loop through all words in text (via spaces search): x -->
+                    <!-- - Skip articles (a, and, the etc), exclude "job" -->
+            <!-- iii: On each word, lowercase. Then evaluate if it already exists in the dictionary. x -->
+                    <!-- a. If word exists, get the word total and increment by 1. -->
+                    <!-- b. If word does not exist: -->
+                        <!-- - Push new word into dictionary, set value. -->
+            iv: After analysis is complete, get the data and sort it by highest total count for display
+
+        B: Validations:
+            C: Handle empty post data - display an error (HTML5)
+            D: Handle special characters
+            E: Handle SQL injection
+
+2) Get and Analyze Post Data from resume:
+    <!-- Methods: -->
+    <!-- - Copy/Paste Data -->
+    - Upload? - v2.0
+
+    <!-- A: Calculate total word count for each word  -->
+        <!-- i:   Use a hash data structure format: {"word": total#, 0 or 1 for match or no match (defaults as 0)} -->
+        <!-- ii:  Loop through all words in text (via spaces search):  -->
+                <!-- - Skip articles (a, and, the etc), exclude "job"  -->
+        <!-- iii: On each word, lowercase. Then evaluate if it already exists in the dictionary.x -->
+                <!-- a. If word exists, get the word total and increment by 1. -->
+                <!-- b. If word does not exist:  -->
+                    <!-- - Push new word into dictionary, set value. -->
+        iv: After analysis is complete, get the data and sort it by highest total count for display
+        <!-- v : Check to see if word count vs 750 word count: -->
+             - if higher, display shorten message
+             - if lower, display add more message.
+        vi: Check if measurable results exist (numbers, percentages, dollar signs)
+        vii: Check for actionable verbs - http://www.forbes.com/sites/susanadams/2014/03/17/the-best-and-worst-words-to-use-on-your-resume/#4ecc684833e4
+
+    B: Validations:
+        C: Handle empty post data - display an error (HTML5)
+        D: Handle special characters
+        E: Handle injections
+
+<!-- 3) Compare Resume word dictionary to Job Description Dictionary: -->
+        <!-- A: Iterate through job description object and perform a "find" function in resume word dictionary -->
+            <!-- - if match is found, set the resume word index to 1, increment a variable match -->
+            <!-- - if match is not found move on -->
+
+<!-- 4) Calculate percentages: -->
+        <!-- A: Get total number of words -->
+        <!-- B: Get total number of matches from variable match -->
+        <!-- C: Divide total number of matches from total number of words -->
+
+Display shows (use D3 or graphing program):
+    1) Total word count and suggestion based on 750 limit ()
+    2) Total Percentage of match - look for 80% or above (% meter)
+    3) Line by line comparison
+    4) Count of words to avoid, Count of words to include

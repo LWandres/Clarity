@@ -1,0 +1,11 @@
+{
+  "name": "Clarity",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.5.8",
+    "body-parser": "latest",
+    "express": "~4.2.0",
+    "hashmap": "^2.0.6",
+    "path": "^0.12.7"
+  }
+}
